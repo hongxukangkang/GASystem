@@ -1,4 +1,4 @@
-package sbsed.domain.IServices;
+package fjnu.domain.IServices;
 
 public class ChromosomeOpt implements IChromosomeServices {
 

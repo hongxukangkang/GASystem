@@ -1,7 +1,7 @@
-package sbsed.domainTest;
+package fjnu.domainTest;
 
 //import java.io.FileInputStream;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -11,22 +11,23 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import sbsed.domain.GACfgInfo;
-import sbsed.domain.GAParameter;
+import fjnu.domain.GACfgInfo;
+import fjnu.domain.GAParameter;
+
 import static org.mockito.Mockito.*;//
 
 public class ConfigurationInfoTest {
 
-	private String propetyFilePath = null;
+//	private String propetyFilePath = null;
 	private Properties mockProperties = null;
 	private GACfgInfo confInfo = null;
 
 	@Before
 	public void setUp() throws Exception {
-		propetyFilePath = "src/sbsed/domainTest/GAParameter.properties";
-		confInfo = new GACfgInfo(propetyFilePath);
+		// propetyFilePath = "src/sbsed/domainTest/GAParameter.properties";
+
 		mockProperties = mock(Properties.class);
-		
+		confInfo = new GACfgInfo(mockProperties);
 		/*
 		 * propetyFilePath = "src/sbsed/domainTest/GAParameter.properties";
 		 * mockProperties = new Properties(); mockProperties.load(new
@@ -97,7 +98,6 @@ public class ConfigurationInfoTest {
 		double expectedMaxFitness = 20.0;
 		double actualMaxFitness = gaPara.getMaxFitness();
 		Assert.assertEquals(expectedMaxFitness, actualMaxFitness);
-
 	}
 
 	@Test
@@ -124,23 +124,10 @@ public class ConfigurationInfoTest {
 		when(mockProperties.getProperty("implsNameOfChrom")).thenReturn(null);
 
 		GAParameter gaParameter = confInfo.getParametersOfGA();
-		List<StringBuffer> actualPara = gaParameter.getImplClsName();
-		List<StringBuffer> expectedPara = new ArrayList<StringBuffer>();
-		StringBuffer sb = new StringBuffer();
-		sb.append("not implsName");
-		expectedPara.add(sb);
+		String actualPara = gaParameter.getImplClsName();
+		String expectedPara = "not implsName";
+		Assert.assertEquals(expectedPara, actualPara);
 
-		int actualLen = actualPara.size();
-		int expectedLen = expectedPara.size();
-		if (actualLen == expectedLen) {
-			for (int i = 0; i < actualLen; i++) {
-				Assert.assertEquals(expectedPara.get(i).toString(), actualPara
-						.get(i).toString());
-			}
-		} else {
-			//
-			System.out.println("！！！方法设置值错误！！！");
-		}
 	}
 
 	// 以上所有的测试都是在检测为空的时候，是否显示默认值；
@@ -162,20 +149,10 @@ public class ConfigurationInfoTest {
 				"impl1,impl2");
 		confInfo.setProperties(mockProperties);
 		GAParameter gaPara = confInfo.getParametersOfGA();
-		List<StringBuffer> expectedList = new ArrayList<StringBuffer>();
-		StringBuffer sb1 = new StringBuffer();
-		StringBuffer sb2 = new StringBuffer();
-		sb1.append("impl1");
-		sb2.append("impl2");
-		expectedList.add(sb1);
-		expectedList.add(sb2);
+		String expectedList = "";
 
-		List<StringBuffer> actualImplList = gaPara.getImplClsName();
-		int len = actualImplList.size();
-		for (int i = 0; i < len; i++) {
-			Assert.assertEquals(expectedList.get(i).toString(), actualImplList
-					.get(i).toString());
-		}
+		String actualImplList = gaPara.getImplClsName();
+		Assert.assertEquals(expectedList, actualImplList);
 
 		// when(mockProperties.getProperty("implClsNameOfChrom")).thenReturn(implList);
 

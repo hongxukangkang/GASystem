@@ -1,4 +1,4 @@
-package sbsed.domain;
+package fjnu.domain;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class GAParameter {
 	/**
 	 * 染色体接口的实现类
 	 */
-	private List<StringBuffer> implClsNameOfChrom;
+	private String implClsNameOfChrom;//String
 
 	public List<StringBuffer> getEncodes() {
 		return encodes;
@@ -51,11 +51,11 @@ public class GAParameter {
 		this.encodes = encodes;
 	}
 
-	public List<StringBuffer> getImplClsName() {
+	public String getImplClsName() {
 		return implClsNameOfChrom;
 	}
 
-	public void setImplClsName(List<StringBuffer> implClsName) {
+	public void setImplClsName(String implClsName) {
 		this.implClsNameOfChrom = implClsName;
 	}
 

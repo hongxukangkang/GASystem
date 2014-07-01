@@ -1,8 +1,9 @@
-package sbsed.domain;
+package fjnu.domain;
 
 import java.util.Random;
 
-import sbsed.domain.IServices.IChromosomeServicesOld;
+import fjnu.domain.IServices.IChromosomeServicesOld;
+
 
 public class ChromosomeOld_zk {
 

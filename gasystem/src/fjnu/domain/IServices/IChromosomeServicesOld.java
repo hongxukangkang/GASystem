@@ -1,6 +1,6 @@
-package sbsed.domain.IServices;
+package fjnu.domain.IServices;
 
-import sbsed.domain.ChromosomeOld_zk;
+import fjnu.domain.ChromosomeOld_zk;
 
 public interface IChromosomeServicesOld {
 	/**
